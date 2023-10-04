@@ -1,0 +1,27 @@
+appName: web-app-pod
+
+deployment:
+  name: nginxpoddeployment
+  labels:
+    xname: nginx_pod
+
+containers:
+  name: nginx
+  image: nginx:latest
+
+resources:
+  memory: "128Mi"
+  cpu: "100m"
+
+limits:
+  memory: "128Mi"
+  cpu: "100m"
+
+service:
+  name: web-app-service
+  type: NodePort
+  ports:
+    port: 31000
+
+replicas: 4
+containerPort: 80

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app-pod
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: web-app-pod
+  template:
+    metadata:
+      labels:
+        app: web-app-pod
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:latest
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "200m"
+          ports:
+          - containerPort: 80
